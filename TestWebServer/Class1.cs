@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebServer
+namespace TestWebServer
 {
     public class Class1
     {
