@@ -8,7 +8,6 @@ namespace WebServer
         HttpListenerContext context;
         public static void Process(HttpListenerContext context)
         {
-            string responseText;
             try
             {
                 WebPage webPage = new WebPage(context.Request);

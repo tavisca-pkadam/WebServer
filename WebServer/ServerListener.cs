@@ -21,15 +21,12 @@ namespace WebServer
             isListening = true;
             this.httpListener.Start();
 
-            var listenerThread = new Thread(_ =>
+          
+            while (isListening)
             {
-                while (isListening)
-                {
-                    var context = this.httpListener.GetContext();
-                    this.OnClientConnected(context);
-                }
-            });
-            listenerThread.Start();
+                var context = this.httpListener.GetContext();
+                this.OnClientConnected(context);
+            }
         }
     }
 

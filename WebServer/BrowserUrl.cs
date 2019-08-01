@@ -10,16 +10,20 @@ namespace WebServer
             string requestUrl = request.RawUrl;
             if (Validate(requestUrl))
             {
-                string filePath = ServerConfiguration.serverDirectory + requestUrl + ServerConfiguration.fileExtension;
-                return filePath;
+                return GenerateFilePathFromFileName(requestUrl);
+                
             }
-            return ServerConfiguration.serverDirectory + "invalid" + ServerConfiguration.fileExtension;
-
+            return GenerateFilePathFromFileName("invalid");
         }
 
         public static bool Validate(string url)
         {
             return url.Split().Length.Equals(1);
+        }
+
+        public static string GenerateFilePathFromFileName(string fileName)
+        {
+            return ServerConfiguration.serverDirectory + fileName + ServerConfiguration.fileExtension;
         }
     }
 

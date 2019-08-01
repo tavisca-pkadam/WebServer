@@ -6,8 +6,8 @@ namespace WebServer
     public class WebPage
     {
         public string data;
-        public const string htmlPrefix = "<html><body><h5><p>"  ;
-        public const string htmlSuffix = "</p></h5></body></html>";
+        public const string htmlPrefix = "<html><body><p>"  ;
+        public const string htmlSuffix = "</p></body></html>";
 
         public WebPage()
         {
@@ -19,9 +19,9 @@ namespace WebServer
         {
            
             string filePath = BrowserUrl.Parse(request);
-            string responseText = System.IO.File.ReadAllText(filePath);
+            string responseText = FileHandle.ReadFile(filePath);
 
-            this.data  = htmlPrefix + responseText.Replace(@"\n", @"<br>") + htmlSuffix;
+            this.data  = htmlPrefix + responseText.Replace("\n", "<br>") + htmlSuffix;
         }
 
     }
